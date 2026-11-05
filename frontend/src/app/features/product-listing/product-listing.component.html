@@ -1,0 +1,55 @@
+<div class="listing-container">
+
+  <div class="listing-header">
+    <h2 class="section-heading">All Perfumes</h2>
+
+    <p-dropdown
+      [options]="categories"
+      [(ngModel)]="selectedCategory"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Filter by category"
+      (onChange)="onCategoryChange()"
+      styleClass="category-filter"
+    />
+  </div>
+
+  <div class="product-grid">
+    @for (product of filteredProducts; track product.id) {
+      <div class="grid-item">
+        <p-card>
+          <ng-template pTemplate="header">
+            <img
+              [src]="product.imageUrl"
+              [alt]="product.name"
+              class="product-image"
+            />
+          </ng-template>
+
+          <div class="card-body">
+            <div class="card-top-row">
+              <h3 class="product-name">{{ product.name }}</h3>
+              <p-tag [value]="product.category" severity="info" />
+            </div>
+
+            <p class="product-desc">{{ product.description }}</p>
+
+            <div class="card-footer-row">
+              <span class="product-price">${{ product.price }}</span>
+              @if (product.specialOffer) {
+                <p-tag value="Special Offer" severity="success" />
+              }
+            </div>
+          </div>
+        </p-card>
+      </div>
+    }
+
+    @if (filteredProducts.length === 0) {
+      <div class="no-results">
+        <p>No perfumes found in this category.</p>
+      </div>
+    }
+  </div>
+
+</div>

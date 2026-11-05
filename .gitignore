@@ -1,0 +1,5 @@
+scent-store/
+.claude/settings.local.json
+.idea/
+node_modules/
+frontend/dist/

@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /angular/scent-store/
+
+  # Serve existing files and directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Leave API requests alone
+  RewriteRule ^api/ - [L]
+
+  # Everything else goes to the Angular app
+  RewriteRule . /angular/scent-store/index.html [L]
+</IfModule>
+
+# Ensure 404s serve index.html for Angular routes
+ErrorDocument 404 /angular/scent-store/index.html

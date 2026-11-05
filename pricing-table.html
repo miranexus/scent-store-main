@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .pricing-header h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #1a202c;
+      letter-spacing: -0.5px;
+    }
+
+    .pricing-header p {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #4a5568;
+    }
+
+    .pricing-grid {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    /* ── Card ── */
+    .card {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1.5px solid #e2e8f0;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+    }
+
+    /* ── Pro (highlighted) card ── */
+    .card.featured {
+      background: #1a202c;
+      border-color: #1a202c;
+      transform: scale(1.05);
+      z-index: 1;
+      box-shadow: 0 20px 60px rgba(26,32,44,0.35);
+    }
+
+    .card.featured:hover {
+      transform: scale(1.05) translateY(-4px);
+    }
+
+    .card.featured .plan-name,
+    .card.featured .price,
+    .card.featured .price-period,
+    .card.featured .feature-item {
+      color: #f7fafc;
+    }
+
+    .card.featured .plan-desc {
+      color: #a0aec0;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-block;
+      background: #6c63ff;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
+
+    .badge-placeholder {
+      height: 26px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Plan name ── */
+    .plan-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+
+    .plan-desc {
+      font-size: 0.875rem;
+      color: #718096;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ── Price ── */
+    .price-block {
+      margin: 24px 0 28px;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1a202c;
+      line-height: 1;
+    }
+
+    .price sup {
+      font-size: 1.4rem;
+      font-weight: 700;
+      vertical-align: super;
+      line-height: 0;
+    }
+
+    .price-period {
+      font-size: 0.9rem;
+      color: #718096;
+      margin-top: 4px;
+    }
+
+    /* ── Feature list ── */
+    .features {
+      list-style: none;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #4a5568;
+      line-height: 1.45;
+    }
+
+    .feature-item::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2348bb78'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-top: 1px;
+    }
+
+    /* ── CTA Button ── */
+    .cta {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+      margin-top: auto;
+    }
+
+    .cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cta:active { transform: translateY(0); }
+
+    .card:not(.featured) .cta {
+      background: #edf2f7;
+      color: #2d3748;
+    }
+
+    .card.featured .cta {
+      background: #6c63ff;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(108,99,255,0.45);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin-bottom: 28px;
+    }
+
+    .card.featured .divider {
+      background: #2d3748;
+    }
+
+    /* ────────────────────────────
+       RESPONSIVE
+    ──────────────────────────── */
+
+    /* Tablet (≤ 900px) */
+    @media (max-width: 900px) {
+      .pricing-grid {
+        gap: 16px;
+      }
+
+      .card {
+        padding: 28px 20px;
+      }
+
+      .card.featured {
+        transform: scale(1.02);
+      }
+
+      .card.featured:hover {
+        transform: scale(1.02) translateY(-4px);
+      }
+
+      .price { font-size: 2.4rem; }
+    }
+
+    /* Mobile (≤ 640px) — stack vertically */
+    @media (max-width: 640px) {
+      .pricing-header h1 { font-size: 1.75rem; }
+
+      .pricing-grid {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card.featured {
+        transform: none;
+        order: -1; /* Pro card on top */
+      }
+
+      .card.featured:hover {
+        transform: translateY(-4px);
+      }
+
+      .price { font-size: 2.6rem; }
+
+      /* Remove dead space above non-featured cards when stacked */
+      .badge-placeholder {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pricing-header">
+    <h1>Simple, transparent pricing</h1>
+    <p>Start free. Scale as you grow. No hidden fees.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Basic -->
+    <div class="card">
+      <div class="badge-placeholder"></div>
+      <div class="plan-name">Basic</div>
+      <div class="plan-desc">Everything you need to get started.</div>
+      <div class="price-block">
+        <div class="price"><sup>$</sup>9</div>
+        <div class="price-period">per month</div>
+      </div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li class="feature-item">5 projects</li>
+        <li class="feature-item">10 GB storage</li>
+        <li class="feature-item">Email support</li>
+        <li class="feature-item">API access</li>
+      </ul>
+      <a href="#" class="cta">Get started</a>
+    </div>
+
+    <!-- Pro (featured) -->
+    <div class="card featured">
+      <span class="badge">Most Popular</span>
+      <div class="plan-name">Pro</div>
+      <div class="plan-desc">For growing teams that need more power.</div>
+      <div class="price-block">
+        <div class="price"><sup>$</sup>29</div>
+        <div class="price-period">per month</div>
+      </div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li class="feature-item">Unlimited projects</li>
+        <li class="feature-item">100 GB storage</li>
+        <li class="feature-item">Priority support</li>
+        <li class="feature-item">Advanced analytics</li>
+        <li class="feature-item">Custom integrations</li>
+      </ul>
+      <a href="#" class="cta">Start free trial</a>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="card">
+      <div class="badge-placeholder"></div>
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-desc">Dedicated infrastructure for large teams.</div>
+      <div class="price-block">
+        <div class="price"><sup>$</sup>99</div>
+        <div class="price-period">per month</div>
+      </div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li class="feature-item">Everything in Pro</li>
+        <li class="feature-item">Unlimited storage</li>
+        <li class="feature-item">Dedicated account manager</li>
+        <li class="feature-item">SLA guarantee (99.99%)</li>
+        <li class="feature-item">SSO &amp; advanced security</li>
+      </ul>
+      <a href="#" class="cta">Contact sales</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

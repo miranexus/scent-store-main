@@ -1,0 +1,80 @@
+<div class="carousel-container">
+
+  <!-- Featured Perfumes -->
+  <h2 class="section-heading">Featured Perfumes</h2>
+
+  <p-carousel
+    [value]="featuredProducts"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="4000"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="card-wrapper">
+        <p-card>
+          <ng-template pTemplate="header">
+            <img
+              [src]="product.imageUrl"
+              [alt]="product.name || 'Product image'"
+              class="product-image"
+            />
+          </ng-template>
+
+          <div class="card-body">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p-tag [value]="product.category" severity="info" />
+            <p class="product-desc">{{ product.description }}</p>
+            <span class="product-price">${{ product.price.toFixed(2) }}</span>
+          </div>
+        </p-card>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <!-- Special Offers -->
+  @if (specialOffers.length > 0) {
+    <h2 class="section-heading offers-heading">Special Offers</h2>
+
+    <p-carousel
+      [value]="specialOffers"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-product pTemplate="item">
+        <div class="card-wrapper">
+          <p-card>
+            <ng-template pTemplate="header">
+              <img
+                [src]="product.imageUrl"
+                [alt]="product.name || 'Product image'"
+                class="product-image"
+              />
+            </ng-template>
+
+            <div class="card-body">
+              <h3 class="product-name">{{ product.name }}</h3>
+              <p-tag [value]="product.category" severity="info" />
+              <p class="product-desc">{{ product.description }}</p>
+
+              <div class="offer-price-row">
+                <span
+                  [class]="(product.discount && product.discount > 0 && product.discount < 100) ? 'original-price' : 'plain-price'"
+                  [attr.aria-label]="'Original price $' + product.price.toFixed(2)"
+                >${{ product.price.toFixed(2) }}</span>
+                @if (product.discount && product.discount > 0 && product.discount < 100) {
+                  <span class="sale-price" [attr.aria-label]="'Sale price $' + getDiscountedPrice(product).toFixed(2)">${{ getDiscountedPrice(product).toFixed(2) }}</span>
+                  <span class="discount-badge">{{ product.discount }}% OFF</span>
+                }
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </ng-template>
+    </p-carousel>
+  }
+
+</div>

@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "name": "Rose Bloom",
+    "price": 89.99,
+    "imageUrl": "assets/rose_bloom.png",
+    "description": "A delicate floral fragrance with notes of rose, jasmine, and soft musk.",
+    "category": "Floral",
+    "featured": true,
+    "specialOffer": false
+  },
+  {
+    "id": 2,
+    "name": "Cherry Blossom Dream",
+    "price": 74.99,
+    "imageUrl": "assets/cherry_blossom_dream.png",
+    "description": "Sweet cherry blossom with hints of peony and white tea.",
+    "category": "Floral",
+    "featured": false,
+    "specialOffer": true,
+    "discount": 15
+  },
+  {
+    "id": 3,
+    "name": "Lily of the Valley",
+    "price": 65.00,
+    "imageUrl": "assets/lilly_of_the_valley.png",
+    "description": "A fresh, clean floral scent reminiscent of spring mornings.",
+    "category": "Floral",
+    "featured": false,
+    "specialOffer": false
+  },
+  {
+    "id": 4,
+    "name": "Sandalwood Noir",
+    "price": 120.00,
+    "imageUrl": "assets/sandlewood_noir.png",
+    "description": "Rich sandalwood and cedar with a hint of dark amber and vanilla.",
+    "category": "Woody",
+    "featured": true,
+    "specialOffer": false
+  },
+  {
+    "id": 5,
+    "name": "Forest Walk",
+    "price": 95.50,
+    "imageUrl": "assets/forest_walk.png",
+    "description": "Earthy vetiver, pine, and mossy undertones for a grounded, natural feeling.",
+    "category": "Woody",
+    "featured": false,
+    "specialOffer": true,
+    "discount": 20
+  },
+  {
+    "id": 6,
+    "name": "Oud Mystique",
+    "price": 149.99,
+    "imageUrl": "assets/oud_mystique.png",
+    "description": "Luxurious oud wood blended with rose and saffron for a truly opulent experience.",
+    "category": "Woody",
+    "featured": true,
+    "specialOffer": false
+  },
+  {
+    "id": 7,
+    "name": "Sicilian Lemon",
+    "price": 59.99,
+    "imageUrl": "assets/sicilian_lemon.png",
+    "description": "A burst of fresh lemon and bergamot with a light floral dry-down.",
+    "category": "Citrus",
+    "featured": false,
+    "specialOffer": false
+  },
+  {
+    "id": 8,
+    "name": "Tangerine Twist",
+    "price": 67.00,
+    "imageUrl": "assets/tangerine_twist.png",
+    "description": "Vibrant tangerine and grapefruit with an energising ginger kick.",
+    "category": "Citrus",
+    "featured": true,
+    "specialOffer": true,
+    "discount": 10
+  },
+  {
+    "id": 9,
+    "name": "Citrus Grove",
+    "price": 72.50,
+    "imageUrl": "assets/citrus_grove.png",
+    "description": "A blend of lime, yuzu, and neroli evoking a sun-drenched orchard.",
+    "category": "Citrus",
+    "featured": false,
+    "specialOffer": false
+  },
+  {
+    "id": 10,
+    "name": "Amber Nights",
+    "price": 110.00,
+    "imageUrl": "assets/amber_nights.png",
+    "description": "Warm amber and benzoin with a spicy cardamom and incense heart.",
+    "category": "Oriental",
+    "featured": false,
+    "specialOffer": true,
+    "discount": 25
+  },
+  {
+    "id": 11,
+    "name": "Spice Bazaar",
+    "price": 99.00,
+    "imageUrl": "assets/spice_bazaar.png",
+    "description": "An exotic blend of saffron, cinnamon, and patchouli.",
+    "category": "Oriental",
+    "featured": true,
+    "specialOffer": false
+  },
+  {
+    "id": 12,
+    "name": "Desert Rose",
+    "price": 85.00,
+    "imageUrl": "assets/desert_rose.png",
+    "description": "Opulent rose absolute with musk, vanilla, and warm sandalwood base.",
+    "category": "Oriental",
+    "featured": false,
+    "specialOffer": false
+  }
+]

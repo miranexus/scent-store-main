@@ -1,0 +1,32 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# node_modules
+node_modules/
+
+# Angular cache
+/.angular/cache
+
+# Coverage
+coverage/
+*.lcov
+
+# IDEs
+/.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# misc
+.sass-cache/
+npm-debug.log
+yarn-error.log
+
+# System files
+.DS_Store
+Thumbs.db
